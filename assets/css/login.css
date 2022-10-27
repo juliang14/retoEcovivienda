@@ -1,0 +1,55 @@
+.off{
+    display: none;
+}
+.container-img{
+    background-color: #F5F5F5;
+}
+.img-form{
+    border-radius: 10px;
+}
+.header-form-login a{
+    text-decoration: none;
+    font-weight: bold;
+    color: #ccc;
+}
+.header-form-login a:hover:not(.active){
+    cursor: pointer;
+    border-bottom: 2px solid;
+}
+.header-form-login .active{
+    border-bottom: 2px solid;
+    color: #004884;
+}
+.tittle-login{
+    color: #484e62;
+}
+.tittle-login span{
+    color: #004884;
+}
+.form-login{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+.body-form-login{
+    padding: 20px 30px;
+}
+.version-app{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    font-size: 15px;
+}
+.btn-password{
+    cursor: pointer;
+}
+.footer-form-login .active{
+    border-right: 2px solid #ccc;
+}
+.footer-form-login .nav-link{
+    font-weight: bolder;
+    cursor: pointer;
+}
+.footer-form-login .nav-link:hover{
+    text-decoration: underline;
+}
