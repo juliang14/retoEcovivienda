@@ -1,16 +1,32 @@
 <?php  
 
-$class = (empty($_REQUEST['class']))?0:$_REQUEST['class'];
-$method = (empty($_REQUEST['method']))?0:$_REQUEST['method'];
+$controller = "User";
+$method     = "index";
+$requestUri = $_SERVER["REQUEST_URI"];
+$decodeParams = explode("?",$requestUri);
 
-$classInicio = ($class == "Index" && $method == "index"? "nav-link active" : "nav-link");
-$classEventos = ($class==="Eventos" && $method ==="Eventos")?"nav-link active":"nav-link";
-$classAcerca = ($class==="Index" && $method ==="acercaDeNosotros")?"nav-link active":"nav-link";
-$classContactos = ($class==="Index" && $method ==="contactos")?"nav-link active":"nav-link";
+if(isset($_REQUEST['class']) && isset($_REQUEST['method']) ){
+    $controller=$_REQUEST['class'];
+    $method=$_REQUEST['method'];
+}else if(sizeof($decodeParams) > 1){
+    $arrayParams = explode("&",base64_decode($decodeParams[1]));
+    for ($i=0; $i < sizeof($arrayParams) ; $i++) { 
+        $arrayData = explode("=",$arrayParams[$i]);
+        if ($arrayData[0]==="class") {
+            $controller = $arrayData[1];
+        } else if($arrayData[0]==="method") {
+            $method = $arrayData[1];
+        }
+    }
+}
+$classInicio = ($controller == "User" && $method == "index"? "nav-link active" : "nav-link");
+$classEventos = ($controller==="Eventos" && $method ==="Eventos")?"nav-link active":"nav-link";
+$classAcerca = ($controller==="Index" && $method ==="acercaDeNosotros")?"nav-link active":"nav-link";
+$classContactos = ($controller==="Index" && $method ==="contactos")?"nav-link active":"nav-link";
 
 ?>
 <div class="container-logo col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-2 m-auto p-0">
-	<img src="Assets/img/logos/color.png" class="d-block m-auto" id="img-logo" alt="logo">
+	<img src="Assets/img/logos/color.png" class="d-block w-50 m-auto" id="img-logo" alt="logo">
 </div>
 <div class="container-menu-top col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 col-xxl-10 p-0">
 	<div class="row ">
@@ -19,32 +35,9 @@ $classContactos = ($class==="Index" && $method ==="contactos")?"nav-link active"
 				<div class="container-fluid">
 					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 						<div class="navbar-nav">
-							<form class="d-flex nav-link form-search" role="search">
-								<input class="form-control" type="search" placeholder="Buscar" aria-label="Search">
-								<button class="btn btn-outline-secondary" type="submit">IR</button>
-							</form>
-							<a class="nav-link" href="?class=security&method=loginEmpleado">
-								<button type="button" class="btn">
-									<i class="fas fa-user"></i>
-								</button>
-							</a>
-							<a class="nav-link" href="?class=security&method=loginAdministrador">
-								<button type="button" class="btn">    
-									<i class="fas fa-user-secret"></i>
-								</button>
-							</a>
-							<a class="nav-link" href="?class=security&method=loginUsuario">
-								<button type="button" class="btn btn-dark">
-									<i class="fa-solid fa-user"></i>
-									Iniciar sesion
-								</button>
-							</a>
-							<a class="nav-link" href="?class=security&method=formularioRegistro">
-								<button type="button" class="btn btn-dark">
-									<i class="fa-solid fa-file-pen"></i>
-									Registro
-								</button>
-							</a>
+                            <button type="button" class="btn" id="icon-user">
+                                <i class="fas fa-user"></i>
+                            </button>
 						</div>
 					</div>
 				</div>
@@ -57,7 +50,7 @@ $classContactos = ($class==="Index" && $method ==="contactos")?"nav-link active"
 			<div class="container-fluid">
 				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 					<div class="navbar-nav nav-center">
-						<a class="<?php echo $classInicio ?>" aria-current="page" href="?class=Index&method=index">INICIO</a>
+						<a class="<?php echo $classInicio ?>">INICIO</a>
 						<a class="<?php echo $classEventos ?>" href="?class=Eventos&method=Eventos">EVENTOS</a>
 						<a class="<?php echo $classAcerca ?>" href="?class=Index&method=acercaDeNosotros">ACERCA DE NOSOTROS</a>
 						<a class="<?php echo $classContactos ?>" href="?class=Index&method=contactos">CONTACTENOS</a>
