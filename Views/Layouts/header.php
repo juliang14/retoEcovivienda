@@ -50,10 +50,10 @@ $classContactos = ($controller==="Index" && $method ==="contactos")?"nav-link ac
 			<div class="container-fluid">
 				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 					<div class="navbar-nav nav-center">
-						<a class="<?php echo $classInicio ?>">INICIO</a>
-						<a class="<?php echo $classEventos ?>" href="?class=Eventos&method=Eventos">EVENTOS</a>
-						<a class="<?php echo $classAcerca ?>" href="?class=Index&method=acercaDeNosotros">ACERCA DE NOSOTROS</a>
-						<a class="<?php echo $classContactos ?>" href="?class=Index&method=contactos">CONTACTENOS</a>
+						<a class="<?php echo $classInicio ?>">inicio</a>
+						<a class="<?php echo $classEventos ?>" href="?class=Eventos&method=Eventos">Avance de obra</a>
+						<a class="<?php echo $classAcerca ?>" href="?class=Index&method=acercaDeNosotros">Boletines y comunicados</a>
+						<a class="<?php echo $classContactos ?>" href="?class=Index&method=contactos">Acerca del proyecto</a>
 					</div>
 				</div>
 			</div>
