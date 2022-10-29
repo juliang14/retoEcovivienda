@@ -20,9 +20,9 @@ if(isset($_REQUEST['class']) && isset($_REQUEST['method']) ){
     }
 }
 $classInicio = ($controller == "User" && $method == "index"? "nav-link active" : "nav-link");
-$classEventos = ($controller==="Eventos" && $method ==="Eventos")?"nav-link active":"nav-link";
-$classAcerca = ($controller==="Index" && $method ==="acercaDeNosotros")?"nav-link active":"nav-link";
-$classContactos = ($controller==="Index" && $method ==="contactos")?"nav-link active":"nav-link";
+$classWorkProgress = ($controller==="User" && $method ==="workProgress")?"nav-link active":"nav-link";
+$classNewsletters = ($controller==="User" && $method ==="newsletters")?"nav-link active":"nav-link";
+$classAboutProject = ($controller==="User" && $method ==="aboutProject")?"nav-link active":"nav-link";
 
 ?>
 <div class="container-logo col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-2 m-auto p-0">
@@ -33,10 +33,10 @@ $classContactos = ($controller==="Index" && $method ==="contactos")?"nav-link ac
 		<div class="d-flex flex-row-reverse">
 			<nav class="navbar-top navbar navbar-expand-lg">
 				<div class="container-fluid">
-					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="collapse navbar-collapse" id="navbarUser">
 						<div class="navbar-nav">
                             <button type="button" class="btn" id="icon-user">
-                                <i class="fas fa-user"></i>
+                                <i class="fas fa-user text-primary"></i>
                             </button>
 						</div>
 					</div>
@@ -45,15 +45,14 @@ $classContactos = ($controller==="Index" && $method ==="contactos")?"nav-link ac
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-12 col-sm-12 col-md-1 col-lg-1 col-xl-1 col-xxl-2"></div>
-		<nav class="navbar-center navbar navbar-expand-lg col-12 col-sm-12 col-md-11 col-lg-11 col-xl-11 col-xxl-10">
+		<nav class="navbar-center navbar navbar-expand-lg col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
 			<div class="container-fluid">
-				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				<div class="collapse navbar-collapse" id="navbarPage">
 					<div class="navbar-nav nav-center">
-						<a class="<?php echo $classInicio ?>">inicio</a>
-						<a class="<?php echo $classEventos ?>" href="?class=Eventos&method=Eventos">Avance de obra</a>
-						<a class="<?php echo $classAcerca ?>" href="?class=Index&method=acercaDeNosotros">Boletines y comunicados</a>
-						<a class="<?php echo $classContactos ?>" href="?class=Index&method=contactos">Acerca del proyecto</a>
+						<a class="<?php echo $classInicio ?>" href="<?php echo '?'.base64_encode('class=User&method=index&fecha='.date("Y-m-d H:i:s")) ?>">inicio</a>
+						<a class="<?php echo $classWorkProgress ?>" href="<?php echo '?'.base64_encode('class=User&method=workProgress&fecha='.date("Y-m-d H:i:s")) ?>">Avance de obra</a>
+						<a class="<?php echo $classNewsletters ?>" href="<?php echo '?'.base64_encode('class=User&method=newsletters&fecha='.date("Y-m-d H:i:s")) ?>">Boletines y comunicados</a>
+						<a class="<?php echo $classAboutProject ?>" href="<?php echo '?'.base64_encode('class=User&method=aboutProject&fecha='.date("Y-m-d H:i:s")) ?>">Acerca del proyecto</a>
 					</div>
 				</div>
 			</div>

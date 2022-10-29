@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Avance obra</title>
 
     <link rel="shortcut icon" href="assets/img/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="assets/utils/bootstrap/bootstrap-5.2.0/css/bootstrap.min.css">
@@ -18,7 +18,7 @@
         <?php include_once('Views/Layouts/header.php') ?>
     </header>
     <main class="main row m-auto">
-        inicio
+        Boletines y comunicados
     </main>
     <footer class="footer row">
         <?php include_once('Views/Layouts/footer.php') ?>
