@@ -31,17 +31,7 @@ $classAboutProject = ($controller==="User" && $method ==="aboutProject")?"nav-li
 <div class="container-menu-top col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 col-xxl-10 p-0">
 	<div class="row ">
 		<div class="d-flex flex-row-reverse">
-			<nav class="navbar-top navbar navbar-expand-lg">
-				<div class="container-fluid">
-					<div class="collapse navbar-collapse" id="navbarUser">
-						<div class="navbar-nav">
-                            <button type="button" class="btn" id="icon-user">
-                                <i class="fas fa-user text-primary"></i>
-                            </button>
-						</div>
-					</div>
-				</div>
-			</nav>
+			<?php include_once('Views/Layouts/navUser.php') ?>
 		</div>
 	</div>
 	<div class="row">

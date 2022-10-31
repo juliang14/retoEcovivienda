@@ -1,3 +1,22 @@
+.text-right{
+    text-align: right;
+}
+.text-name-user{
+    margin: auto 10px auto 0px;
+    color: #365599;
+}
+.offcanvas-header{
+    color: #365599;
+    border-bottom: 1px solid rgba(13,39,80,.16);
+    box-shadow: inset -.286rem -.286rem .571rem 0 rgba(13,39,80,.16)/*#fff*/,
+                inset .286rem .286rem .571rem 0 rgba(13,39,80,.16);
+}
+#icon-user{
+    border-radius: 20px;
+    box-shadow: inset -.286rem -.286rem .571rem 0 rgba(13,39,80,.16)/*#fff*/,
+                inset .286rem .286rem .571rem 0 rgba(13,39,80,.16);
+    padding: 8px 10px;
+}
 #navbarPage > div{
     border-radius: 20px;
     padding-left: 20px;
@@ -8,10 +27,50 @@
 #navbarPage .active{
     font-weight: bold;
 }
+#navbarPage a{
+    color: #7A7A7B;
+}
 .footer{
     background-color: #176FB4;
+}
+.footer .text-copy-ecovivienda{
+    color: #FFF;
+}
+.footer .text-copy-ecovivienda a{
+    color: #FFF;
+    text-decoration: none;
+}
+.footer .text-copy-ecovivienda i{
+    color: #FFF;
+    font-size: 15px;
+    border-radius: 20px;
+    border: 2px solid;
 }
 .footer .text-copy{
     font-weight: bold;
     color: #fff;
+    font-size: 10px;
+}
+.footer .img-footer{
+    height: 60px;
+}
+.footer .text-copy-ecovivienda strong{
+    border-right: 2px solid #fff;
+    padding: 4px 10px 4px 4px;
+}
+.footer .text-copy-ecovivienda span{
+    margin-left: 10px;
+    font-size: 20px;
+}
+.footer .text-copy-ecovivienda .fa-brands.fa-facebook-f{
+    padding: 5px 9px;
+}
+.footer .text-copy-ecovivienda .fa-brands.fa-instagram{
+    padding: 5px 7px;
+}
+.footer .text-copy-ecovivienda .fa-brands.fa-twitter{
+    padding: 5px;
+}
+.footer .text-copy-ecovivienda .fa-brands.fa-youtube{
+    padding: 5px;
 }
