@@ -34,6 +34,16 @@ Nombre_rol 							varchar (25) not null,
 primary key (Id_rol)
 );
 
+create table send_mail(
+Id_mail 		int 		 auto_increment not null,
+Enviado_a		varchar (100) not null,
+Link			varchar (1000) not null,
+Estado 			varchar (50) not null,
+fecha_envio		datetime not null,
+fecha_vencido	datetime,
+primary key (Id_mail)
+);
+
 ALTER TABLE usuario
 ADD FOREIGN KEY (Rolid_Rol)
 REFERENCES Rol(Id_rol);
@@ -72,7 +82,7 @@ DELIMITER &
 CREATE PROCEDURE PR_OBTENER_USUARIO_SISTEMA( 
 	  P_TIPO_LOGIN	VARCHAR (30)
     , P_TIPO_DOCUMENTO 		VARCHAR (2)
-    , P_USUARIO 		VARCHAR (70)
+    , P_USUARIO 		VARCHAR (100)
     , P_CLAVE 			VARCHAR (40)
 
 )
@@ -86,7 +96,7 @@ BEGIN
     IF V_ISCORREO >0 AND V_TIPO_LOGIN = 'EMAIL' THEN
 		SELECT 
 			A.ID_USUARIO AS ID
-			,concat(A.PRIMER_NOMBRE, ' ', A.SEGUNDO_NOMBRE, ' ', A.PRIMER_NOMBRE, ' ', A.SEGUNDO_NOMBRE) AS NOMBRE
+			,concat(A.PRIMER_NOMBRE, ' ', A.SEGUNDO_NOMBRE, ' ', A.PRIMER_APELLIDO, ' ', A.SEGUNDO_APELLIDO) AS NOMBRE
 			,B.SIGLAS AS TIPO_DOCUMENTO
 			,A.NUMERO_DOCUMENTO
 			,A.EDAD
@@ -101,7 +111,7 @@ BEGIN
     ELSEIF V_TIPO_LOGIN = 'CEDULA' THEN
 		SELECT 
 			A.ID_USUARIO AS ID
-			,concat(A.PRIMER_NOMBRE, ' ', A.SEGUNDO_NOMBRE, ' ', A.PRIMER_NOMBRE, ' ', A.SEGUNDO_NOMBRE) AS NOMBRE
+			,concat(A.PRIMER_NOMBRE, ' ', A.SEGUNDO_NOMBRE, ' ', A.PRIMER_APELLIDO, ' ', A.SEGUNDO_APELLIDO) AS NOMBRE
 			,B.SIGLAS AS TIPO_DOCUMENTO
 			,A.NUMERO_DOCUMENTO
 			,A.EDAD
@@ -113,6 +123,96 @@ BEGIN
 			INNER JOIN TIPO_DOCUMENTO B ON A.Tipo_documentoId_documento = B.Id_documento
             INNER JOIN ROL C ON C.ID_ROL = A.ROLID_ROL
 			WHERE B.SIGLAS = P_TIPO_DOCUMENTO AND A.NUMERO_DOCUMENTO = P_USUARIO AND password = P_CLAVE AND ESTADO = 'activo';
+    END IF;
+    
+END &
+
+DELIMITER &
+CREATE PROCEDURE PR_GET_MAIL_USER( 
+	  P_EMAIL	VARCHAR (50)
+)
+
+BEGIN
+    -- Declarar variables
+    DECLARE V_ISCORREO		 				INT;
+	
+    select locate('@',P_EMAIL) INTO V_ISCORREO;
+    IF V_ISCORREO >0 THEN
+		SELECT 
+			A.ID_USUARIO AS ID
+			,concat(A.PRIMER_NOMBRE, ' ', A.SEGUNDO_NOMBRE, ' ', A.PRIMER_APELLIDO, ' ', A.SEGUNDO_APELLIDO) AS NOMBRE
+			,B.SIGLAS AS TIPO_DOCUMENTO
+			,A.NUMERO_DOCUMENTO
+			,A.EDAD
+			,A.TELEFONO
+			,A.DIRECCION
+			,A.EMAIL
+			FROM USUARIO A
+			INNER JOIN TIPO_DOCUMENTO B ON A.Tipo_documentoId_documento = B.Id_documento
+			WHERE UPPER(A.EMAIL) = UPPER(P_EMAIL) AND A.ESTADO = 'activo';
+    ELSE 
+		SELECT 'valida la informacion' from dual;
+    END IF;
+    
+END &
+
+DELIMITER &
+CREATE PROCEDURE PR_MANNAGE_SEND_MAIL( 
+	  P_ACCION	VARCHAR (30),
+      P_EMAIL	VARCHAR (100),
+      P_LINK	VARCHAR (1000)
+)
+
+BEGIN
+    -- Declarar variables
+    DECLARE V_ISCORREO		 	INT;
+    DECLARE V_CANTIDAD_ENVIOS	INT;
+    DECLARE V_ULTIMO_ENVIO		INT;
+	
+    select locate('@',P_EMAIL) INTO V_ISCORREO;
+    IF V_ISCORREO >0 THEN
+		IF P_ACCION = 'ENVIAR' THEN
+			SELECT COUNT(*) INTO V_CANTIDAD_ENVIOS FROM SEND_MAIL WHERE UPPER(ENVIADO_A) =  UPPER(P_EMAIL);
+            IF V_CANTIDAD_ENVIOS > 0 THEN
+				SELECT MAX(ID_MAIL) INTO V_ULTIMO_ENVIO FROM SEND_MAIL WHERE UPPER(ENVIADO_A) =  UPPER(P_EMAIL);
+				UPDATE SEND_MAIL SET ESTADO ='EXPIRADO', FECHA_VENCIDO = SYSDATE() WHERE ID_MAIL =  V_ULTIMO_ENVIO;
+            END IF;
+            
+			INSERT INTO SEND_MAIL(Enviado_a, Link, Estado, fecha_envio)
+			VALUES(UPPER(P_EMAIL), P_LINK, 'ENVIADO', SYSDATE());
+			COMMIT;
+            
+        ELSEIF P_ACCION = 'VALIDAR' THEN
+			SELECT * FROM SEND_MAIL WHERE UPPER(ENVIADO_A) = UPPER(P_EMAIL) AND LINK = P_LINK;
+        ELSEIF P_ACCION = 'EXPIRAR' THEN
+			UPDATE SEND_MAIL SET ESTADO ='EXPIRADO', FECHA_VENCIDO = SYSDATE() WHERE UPPER(ENVIADO_A) = UPPER(P_EMAIL) AND LINK = P_LINK;
+            COMMIT;
+		ELSE
+			SELECT 'Accion no valida' from dual;
+        END IF;
+    ELSE 
+		SELECT 'Valida la informacion' from dual;
+    END IF;
+    
+END &
+
+DELIMITER &
+CREATE PROCEDURE PR_CHANGE_PASSWORD( 
+      P_EMAIL		VARCHAR (100),
+      P_PASSWORD	VARCHAR (50)
+)
+
+BEGIN
+    -- Declarar variables
+    DECLARE V_ISCORREO		 	INT;
+	
+    select locate('@',P_EMAIL) INTO V_ISCORREO;
+    IF V_ISCORREO >0 THEN
+		UPDATE USUARIO SET password = P_PASSWORD 
+        WHERE UPPER(EMAIL) = UPPER(P_EMAIL);
+        COMMIT;
+    ELSE 
+		SELECT 'Valida la informacion' from dual;
     END IF;
     
 END &

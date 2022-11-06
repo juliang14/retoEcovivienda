@@ -1,6 +1,9 @@
 .text-right{
     text-align: right;
 }
+.text-justify{
+    text-align: justify;
+}
 .text-name-user{
     margin: auto 10px auto 0px;
     color: #365599;
@@ -10,6 +13,13 @@
     border-bottom: 1px solid rgba(13,39,80,.16);
     box-shadow: inset -.286rem -.286rem .571rem 0 rgba(13,39,80,.16)/*#fff*/,
                 inset .286rem .286rem .571rem 0 rgba(13,39,80,.16);
+}
+.header-change-pasword{
+    color: #365599;
+    border-bottom: 2px solid rgba(13,39,80,.16);
+}
+.img-logo-change-pasword{
+    width: 150px;
 }
 #icon-user{
     border-radius: 20px;

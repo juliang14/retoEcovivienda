@@ -56,7 +56,7 @@
                                 <label for="email" class="form-label">Correo</label>
                                 <input type="email" name="email" class="form-control" id="email">
                             </div>
-                            <label for="password" class="form-label mt-3">Password</label>
+                            <label for="password" class="form-label mt-3">Contraseña</label>
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mb-4 input-group">
                                 <input type="password" name="password" class="form-control" id="password" required>
                                 <span class="input-group-text btn-password">
@@ -69,8 +69,8 @@
                         </div>
                         <div class="footer-form-login mb-2">
                             <nav class="nav text-center">
-                                <a class="col-6 nav-link active">Olvid&eacute; mi clave</a>
-                                <a class="col-6 nav-link">Registrarme</a>
+                                <a class="col-6 nav-link" onclick="optionLogin('sendPassword');">Olvid&eacute; mi clave</a>
+                                <a class="col-6 nav-link" onclick="optionLogin('TyC');">Consulta los TyC</a>
                             </nav>
                         </div>
                     </form>
@@ -123,23 +123,33 @@
         </section>
         <!-- end sections -->   
         <!-- Modal -->
-        <div class="modal fade accionEvento" id="modalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" onclick="">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-dark text-light">
-                <h5 class="modal-title" id="exampleModalLongTitle">Importante</h5>
-                <button type="button" class="close accionEvento" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+        <div class="modal fade" id="modalCenter" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalCenterLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalCenterLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-getEmail control-modal off">
+                            <form action="<?php echo '?'.base64_encode('class=Mail&method=validateEmail&fecha='.date("Y-m-d H:i:s")) ?>" method="post" class="form-send-password">
+                                <h6>Digita tu correo para recuperar tu contraseña.</h6>
+                                <div class="text-center">
+                                    <input class="form-control mt-4" name="email" id="email" type="email" placeholder="email" required/>
+                                    <button class="btn btn-primary btn-send mt-3">Enviar</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-TyC control-modal off">
+                            <p class="text-justify">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
                 </div>
-                <div class="modal-body">
-                ...
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary accionEvento" data-dismiss="modal" onclick="">Cerrar</button>
-                <!--button type="button" class="btn btn-primary">Save changes</button-->
-                </div>
-            </div>
             </div>
         </div>
         <!-----------------------   FIN MODAL  ------------------------------------>

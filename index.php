@@ -4,6 +4,7 @@
     //llamar modelos
     require_once('Models/Security.php');
     require_once('Models/User.php');
+    require_once('Models/Mail.php');
 
     /*-----------------------------------------------------*/
     // se declara variable $controller = si existe la clase se deja la clase (?), sino(:) deja por default Index

@@ -1,6 +1,6 @@
 <nav class="navbar">
     <div class="container-fluid">
-        <p class="text-name-user">usuario prueba usuario prueba</p>
+        <p class="text-name-user"><?php echo $_SESSION['UserAutenticate']->NOMBRE; ?></p>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" id="icon-user">
             <i class="fas fa-user text-primary"></i>
         </button>
@@ -13,29 +13,22 @@
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
+                        <a class="nav-link" aria-current="page" href="#">
+                            <i class="fa-solid fa-id-badge"></i> Perfil
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                            <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
+                        <a class="nav-link" aria-current="page" href="#">
+                            <i class="fa-sharp fa-solid fa-receipt"></i> 
+                            Solicitudes
+                        </a>
+                        <a class="nav-link" aria-current="page" href="<?php echo '?'.base64_encode('class=User&method=sessionChangePassword&fecha='.date("Y-m-d H:i:s")) ?>">
+                            <i class="fa-sharp fa-solid fa-key"></i> 
+                            Cambiar clave
+                        </a>
+                        <a class="nav-link" aria-current="page" href="<?php echo '?'.base64_encode('class=Security&method=closeSesion&fecha='.date("Y-m-d H:i:s")) ?>">
+                            <i class="fa-solid fa-right-from-bracket"></i> 
+                            Cerrar sesion
+                        </a>
                     </li>
-                </ul>
-                <form class="d-flex mt-3" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-success" type="submit">Search</button>
-                </form>
             </div>
         </div>
     </div>

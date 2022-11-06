@@ -27,5 +27,12 @@
     <script type="text/javascript" src="assets/utils/jquery/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="assets/utils/bootstrap/bootstrap-5.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="Assets/utils/sweetalert2_8.11.8/js/sweetalert2.all.min.js"></script>
+    <script type="text/javascript" src="assets/js/user.js"></script>
+        <script type="text/javascript">
+            <?php if(!empty($_SESSION['message-login'])){ ?>
+                message = '<?php echo $_SESSION['message-login'] ?>';
+                iconMessage = '<?php echo $_SESSION['icon-message'] ?>';
+            <?php unset($_SESSION['message-login']); } ?>
+        </script>
 </body>
 </html>
