@@ -103,3 +103,11 @@
 .text-name-project-carrousel{
     font-weight: bold;
 }
+.list-about .list-group-item{
+    border-color: #fff!important;
+
+}
+.color-blue{
+    color: #004884;
+    font-weight: bold;
+}
