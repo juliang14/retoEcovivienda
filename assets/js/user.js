@@ -43,3 +43,15 @@ $('.btn-confirm-password').click(function(){
         $('#confirm-password').attr('type','password');
     }
 });
+
+$('.btn-bellavista').click(function(){
+    $('.section-apto').addClass('off');
+    $('.section-carrousel').removeClass('off');
+    $(document).scrollTop($(document).height());
+});
+
+$('.btn-apto').click(function(){
+    $('.section-carrousel').addClass('off');
+    $('.section-apto').removeClass('off');
+    $(document).scrollTop($(document).height());
+});

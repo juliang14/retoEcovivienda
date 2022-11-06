@@ -1,3 +1,6 @@
+.off{
+    display: none;
+}
 .text-right{
     text-align: right;
 }
@@ -83,4 +86,20 @@
 }
 .footer .text-copy-ecovivienda .fa-brands.fa-youtube{
     padding: 5px;
+}
+.tittle-login{
+    color: #484e62;
+}
+.tittle-login span{
+    color: #004884;
+}
+.border-card-home{
+    border-right: 2px solid #7A7A7B;
+}
+.border-section-card{
+    border: 1px solid #7A7A7B;
+    border-radius: 10px;
+}
+.text-name-project-carrousel{
+    font-weight: bold;
 }
