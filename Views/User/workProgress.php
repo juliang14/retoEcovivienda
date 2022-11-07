@@ -268,7 +268,7 @@
                 </div>
                 <div class="modal-body text-center">
                     <?php foreach(User::getVideo() AS $ResponseGetVideo){ ?>
-                        <video autoplay controls class="video-modal" width="80%" id="<?php echo str_replace(' ', '', $ResponseGetVideo->nombre_video) ?>">
+                        <video controls class="video-modal" width="80%" id="<?php echo str_replace(' ', '', $ResponseGetVideo->nombre_video) ?>">
                             <source src="assets/videos/proyecto_bellavista/<?php echo $ResponseGetVideo->link_video ?>" type="video/mp4">
                             No disponible
                         </video>
