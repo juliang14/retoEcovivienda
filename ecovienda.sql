@@ -44,6 +44,15 @@ fecha_vencido	datetime,
 primary key (Id_mail)
 );
 
+create table project_video(
+Id_project_video 	int 		 auto_increment not null,
+nombre_video		varchar (100) not null,
+imagen_video		varchar (1000) not null,
+link_video 			varchar (50) not null,
+fecha_registro		datetime not null,
+primary key (Id_project_video)
+);
+
 ALTER TABLE usuario
 ADD FOREIGN KEY (Rolid_Rol)
 REFERENCES Rol(Id_rol);
@@ -77,6 +86,52 @@ values
 (2,  'Diego', 	'Alejandro',	'Santamaria',	'Ospina', 	1, 	'1000000000', 	20, 1023856989, 'Calle 56 #56-8', 			'dalejandrosantamaria@ucompensar.edu.co', 	'diego',	'activo',	1),
 (3,  'Oscar', 	'', 			'Vanegas', 		'', 		1, 	'2000000000', 	29, 3198745289, 'Carrera 15 #56-7', 		'oscar@gmail.com', 							'oscar',	'activo',	1);
 
+insert into project_video
+(nombre_video, imagen_video, link_video, fecha_registro)
+values
+('Video 1', 'imagen1.jpg', 'MVI_9815.mp4', sysdate()),
+('Video 2', 'imagen2.jpg', 'MVI_9816.mp4', sysdate()),
+('Video 3', 'imagen3.jpg', 'MVI_9817.mp4', sysdate()),
+('Video 4', 'imagen4.jpg', 'MVI_9818.mp4', sysdate()),
+('Video 5', 'imagen5.jpg', 'MVI_9819.mp4', sysdate()),
+('Video 6', 'imagen6.jpg', 'MVI_9820.mp4', sysdate()),
+('Video 7', 'imagen7.jpg', 'MVI_9821.mp4', sysdate()),
+('Video 8', 'imagen8.jpg', 'MVI_9822.mp4', sysdate()),
+('Video 9', 'imagen9.jpg', 'MVI_9823.mp4', sysdate()),
+('Video 10', 'imagen10.jpg', 'MVI_9824.mp4', sysdate()),
+('Video 11', 'imagen11.jpg', 'MVI_9826.mp4', sysdate()),
+('Video 12', 'imagen12.jpg', 'MVI_9827.mp4', sysdate()),
+('Video 13', 'imagen13.jpg', 'MVI_9829.mp4', sysdate()),
+('Video 14', 'imagen14.jpg', 'MVI_9830.mp4', sysdate()),
+('Video 15', 'imagen15.jpg', 'MVI_9835.mp4', sysdate()),
+('Video 16', 'imagen16.jpg', 'MVI_9836.mp4', sysdate()),
+('Video 17', 'imagen17.jpg', 'MVI_9837.mp4', sysdate()),
+('Video 18', 'imagen18.jpg', 'MVI_9839.mp4', sysdate()),
+('Video 19', 'imagen19.jpg', 'MVI_9840.mp4', sysdate()),
+('Video 20', 'imagen20.jpg', 'MVI_9841.mp4', sysdate()),
+('Video 21', 'imagen21.jpg', 'MVI_9842.mp4', sysdate()),
+('Video 22', 'imagen22.jpg', 'MVI_9843.mp4', sysdate()),
+('Video 23', 'imagen23.jpg', 'MVI_9845.mp4', sysdate()),
+('Video 24', 'imagen24.jpg', 'MVI_9846.mp4', sysdate()),
+('Video 25', 'imagen25.jpg', 'MVI_9847.mp4', sysdate()),
+('Video 26', 'imagen26.jpg', 'MVI_9849.mp4', sysdate()),
+('Video 27', 'imagen27.jpg', 'MVI_9850.mp4', sysdate()),
+('Video 28', 'imagen28.jpg', 'MVI_9853.mp4', sysdate()),
+('Video 29', 'imagen29.jpg', 'MVI_9854.mp4', sysdate()),
+('Video 30', 'imagen30.jpg', 'MVI_9855.mp4', sysdate()),
+('Video 31', 'imagen31.jpg', 'MVI_9856.mp4', sysdate()),
+('Video 32', 'imagen32.jpg', 'MVI_9857.mp4', sysdate()),
+('Video 33', 'imagen33.jpg', 'MVI_9860.mp4', sysdate()),
+('Video 34', 'imagen34.jpg', 'MVI_9861.mp4', sysdate());
+
+CREATE VIEW VW_GET_VIDEO(
+Id_project_video,
+nombre_video,
+imagen_video,
+link_video,
+fecha_registro
+)AS
+SELECT * FROM project_video WHERE Id_project_video > 0 ORDER BY 1;
 
 DELIMITER &
 CREATE PROCEDURE PR_OBTENER_USUARIO_SISTEMA( 

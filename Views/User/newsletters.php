@@ -19,8 +19,8 @@
     </header>
     <main class="main row m-auto">
         <h3 class="tittle-login text-center mt-5">
-                <span>Documentos de interes</span>
-            </h3>
+            <span>Documentos de interes</span>
+        </h3>
         <section class="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3 m-auto mt-5 mb-5">
             <ul class="nav flex-column nav-left-newsletters">
                 <li class="nav-item header-nav-left">
