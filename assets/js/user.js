@@ -55,3 +55,9 @@ $('.btn-apto').click(function(){
     $('.section-apto').removeClass('off');
     $(document).scrollTop($(document).height());
 });
+$('.item-nav-left .nav-link').click(function(){
+    $('embed').addClass('off');
+    $('.tittle-document').removeClass('off');
+    $('.tittle-document').html($(this).attr('tittle-item'));
+    $('#'+$(this).attr('name-item')).removeClass('off');
+});

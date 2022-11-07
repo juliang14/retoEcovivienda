@@ -111,3 +111,32 @@
     color: #004884;
     font-weight: bold;
 }
+.nav-left-newsletters{
+    border: 1px solid #004884;
+}
+.header-nav-left{
+    background-color: #004884;
+    font-weight: bold;
+}
+.header-nav-left > a{
+    color: #fff!important;
+}
+.item-nav-left{
+    background-color: #e8eaef;
+    cursor: pointer;
+}
+.item-nav-left:hover{
+    background-color: #004884;
+}
+.item-nav-left:hover > a{
+    color: #fff;
+}
+.item-nav-left a{
+    color: #004884;
+    font-weight: bold;
+}
+.visor{
+    width: 90%;
+    height: 500px;
+    border: 3px solid #7A7A7B;
+}

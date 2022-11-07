@@ -18,7 +18,7 @@
         <?php include_once('Views/Layouts/header.php') ?>
     </header>
     <main class="main row m-auto">
-    <section class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 col-xxl-10 m-auto mt-5 mb-5">
+        <section class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 col-xxl-10 m-auto mt-5 mb-5">
             <h3 class="tittle-login text-center">
                 <span>PROYECTO DE VIVIENDA DE INTERÉS SOCIAL Y PRIORITARIO VIP - VIS “BELLAVISTA”</span>
             </h3>
