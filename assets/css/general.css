@@ -146,3 +146,27 @@
 .video{
     cursor: pointer;
 }
+.footer-logos{
+    text-align: right;
+}
+@media screen and (min-width: 200px) and (max-width: 991px){
+    .container-nav-center{
+        border-radius: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        box-shadow: inset -.286rem -.286rem .571rem 0 rgba(13,39,80,.16)/*#fff*/,
+                    inset .286rem .286rem .571rem 0 rgba(13,39,80,.16);
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    #navbarPage > div{
+        box-shadow: inset -.286rem -.286rem .571rem 0 #fff,
+                    inset .286rem .286rem .571rem 0 #fff;
+    }
+    .footer-logos{
+        text-align: center;
+    }
+    .footer .text-copy-ecovivienda span {
+        font-size: 15px;
+    }
+}

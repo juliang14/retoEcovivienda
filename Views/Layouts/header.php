@@ -36,7 +36,11 @@ $classAboutProject = ($controller==="User" && $method ==="aboutProject")?"nav-li
 	</div>
 	<div class="row">
 		<nav class="navbar-center navbar navbar-expand-lg col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-			<div class="container-fluid">
+			<div class="container-fluid container-nav-center">
+				<a class="navbar-brand" ></a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPage" aria-controls="navbarPage" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 				<div class="collapse navbar-collapse" id="navbarPage">
 					<div class="navbar-nav nav-center">
 						<a class="<?php echo $classInicio ?>" href="<?php echo '?'.base64_encode('class=User&method=index&fecha='.date("Y-m-d H:i:s")) ?>">inicio</a>

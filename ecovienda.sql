@@ -1,7 +1,7 @@
 /* ********** CREACION DEL SCHEMA ********** */
-drop database ecovienda;
-create database ecovienda;
-use ecovienda;
+/*drop database ecovienda;
+create database ecovienda;*/
+-- use ecovienda;
 
 create table Tipo_documento(
 Id_documento 						int 		 auto_increment not null,
@@ -29,7 +29,7 @@ primary key (Id_usuario)
 );
 
 create table Rol(
-Id_rol 								int 		 auto_increment not null,
+Id_rol 								int auto_increment not null,
 Nombre_rol 							varchar (25) not null,
 primary key (Id_rol)
 );
